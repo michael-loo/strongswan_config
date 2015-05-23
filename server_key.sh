@@ -10,7 +10,7 @@ fi
 mkdir -p private && mkdir -p cacerts && mkdir -p certs
 
 strongswan pki --gen --type rsa --size 4096 --outform pem > private/strongswanKey.pem
-strongswan pki --self --ca --lifetime 3650 --in private/strongswanKey.pem --type rsa --dn "C=CH, O=Expats-in-China, CN=$CN" --outform pem > cacerts/strongswanCert.pem
+strongswan pki --self --ca --lifetime 3650 --in private/strongswanKey.pem --type rsa --dn "C=CH, O=VULTR-VPS-CENTOS, CN=$CN" --outform pem > cacerts/strongswanCert.pem
 echo 'CA certs at cacerts/strongswanCert.pem\n'
 strongswan pki --print --in cacerts/strongswanCert.pem
 
@@ -21,7 +21,7 @@ strongswan pki --pub --in private/vpnHostKey.pem --type rsa | \
 	strongswan pki --issue --lifetime 730 \
 	--cacert cacerts/strongswanCert.pem \
 	--cakey private/strongswanKey.pem \
-	--dn "C=CH, O=Expats-in-China, CN=$CN" \
+	--dn "C=CH, O=VULTR-VPS-CENTOS, CN=$CN" \
 	--san $CN \
 	--flag serverAuth --flag ikeIntermediate \
 	--outform pem > certs/vpnHostCert.pem

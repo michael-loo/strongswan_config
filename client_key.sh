@@ -31,7 +31,7 @@ strongswan pki --pub --in $keyfile --type rsa | \
 	strongswan pki --issue --lifetime 730 \
 	--cacert cacerts/strongswanCert.pem \
 	--cakey private/strongswanKey.pem \
-	--dn "C=CH, O=Expats-in-China, CN=$MAIL" \
+	--dn "C=CH, O=VULTR-VPS-CENTOS, CN=$MAIL" \
 	--san $MAIL \
 	--outform pem > $certfile
 
